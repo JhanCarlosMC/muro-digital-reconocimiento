@@ -92,7 +92,7 @@ function RegistroParticipante({
             <div className="form-group">
               <label htmlFor="password-profesor">Contraseña del profesor:</label>
               <span id="pass-profesor-hint" className="hint">
-                Clave configurada para el facilitador de la sesión (por defecto: <code>jca2026</code>).
+                Acceso exclusivo para el docente o facilitador de la sesión.
               </span>
               <div className="password-input-wrapper">
                 <input

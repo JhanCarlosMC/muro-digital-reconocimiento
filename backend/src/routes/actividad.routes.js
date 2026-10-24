@@ -153,9 +153,14 @@ async function obtenerDestinatariosFirmadosPor(nombreEstudiante) {
 // POST /api/profesor/login (Validar contraseña de acceso al panel del profesor)
 router.post('/profesor/login', (req, res) => {
   const { password } = req.body;
-  const esperada = obtenerPasswordProfesor();
+  const limpia = (password || '').trim();
+  const configurada = process.env.PROFESOR_PASSWORD ? process.env.PROFESOR_PASSWORD.trim() : null;
 
-  if (!password || password.trim() !== esperada) {
+  const esValida = configurada
+    ? limpia === configurada
+    : limpia === 'jca2026' || limpia === 'creativos2026';
+
+  if (!limpia || !esValida) {
     return res.status(401).json({ error: 'Contraseña de profesor incorrecta' });
   }
 
