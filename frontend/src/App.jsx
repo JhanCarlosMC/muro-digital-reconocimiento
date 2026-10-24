@@ -8,7 +8,8 @@ import BuzonNotas from './components/BuzonNotas';
 import CierreGrupal from './components/CierreGrupal';
 import './App.css';
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+const RAW_API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:3000/api').replace(/\/+$/, '');
+const API_BASE = RAW_API_URL.endsWith('/api') ? RAW_API_URL : `${RAW_API_URL}/api`;
 const STORAGE_KEY_ESTUDIANTE = 'muro_reconocimiento_estudiante_id';
 const STORAGE_KEY_PROFESOR = 'muro_reconocimiento_modo_profesor';
 
